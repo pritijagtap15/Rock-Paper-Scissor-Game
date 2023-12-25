@@ -1,0 +1,91 @@
+import java.util.*;
+public class rockpaperseasor
+{
+    public static void main(String[] args)
+     {
+        Scanner sc=new Scanner(System.in);
+        //import random package
+        Random random= new Random();
+
+        System.out.println("-----------------Welcome to Rock Paper Scissor Game-----------------");
+
+        // get user choice
+        System.out.println("Enter your Choice('Rock' 'Paper' 'scissor)");
+        String userChoice= sc.nextLine();
+        
+        //generate a computer choice
+        String computerChoice = getComputerChoice(random);
+
+        //determine the winner
+        String winner = determineWinner(userChoice, computerChoice);
+
+
+        //Display the result
+        System.out.println("You chose:"+userChoice);
+        System.out.println("Computer Chose:"+computerChoice);
+        System.out.println("Winner:"+winner);
+
+    }
+
+    //computer random choice function
+    public static String getComputerChoice(Random random)
+    {
+        int randomChoice = random.nextInt(3);
+        switch(randomChoice)
+        {
+            case 0:
+            return "rock";
+            case 1:
+            return "paper";
+            case 2:
+            return "scissor";
+            default:
+            return null;
+
+        }
+    }
+
+    // determine who is winner using dermineWinner function
+        private static String determineWinner(String userChoice, String computerChoice)
+        {
+        if (userChoice.equals(computerChoice)) 
+        {
+            return "It's a tie";
+        } 
+        else if (userChoice.equals("rock")) 
+        {
+            if (computerChoice.equals("scissor")) 
+            {
+                return "You Win!!";
+            }
+             else 
+             {
+                return "Computer Win!!";
+            }
+        } 
+        else if (userChoice.equals("paper")) 
+        {
+            if (computerChoice.equals("rock"))
+             {
+                return "You Win!!";
+            } else 
+            {
+                return "Computer Win!!";
+            }
+        } else if (userChoice.equals("scissor")) 
+        {
+            if (computerChoice.equals("paper")) 
+            {
+                return "You Win!!";
+            } 
+            else
+            {
+                return "Computer Win!!";
+            }
+        }
+         else 
+        {
+            return "Invalid Choice";
+        }
+    }
+}
